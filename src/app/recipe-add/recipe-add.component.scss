@@ -1,0 +1,14 @@
+.formAlign{
+  width: 350px;
+  display: flex;
+  margin: 10px auto 10px auto;
+  flex-direction: column;
+}
+
+.ng-valid[required], .ng-valid.required  {
+  border-left: 5px solid #42A948; /* green */
+}
+
+.ng-invalid:not(form)  {
+  border-left: 5px solid #a94442; /* red */
+}

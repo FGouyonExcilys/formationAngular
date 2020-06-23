@@ -1,3 +1,7 @@
+
+<mat-spinner class="example-card" *ngIf="!recipes"></mat-spinner>
 <app-recipe *ngFor="let recipe of recipes"
-            [recipe]="recipe"><br/><br/>
+            [recipe]="recipe"
+            (delete)="deleteRecipeById($event)"
+            ><br/><br/>
 </app-recipe>

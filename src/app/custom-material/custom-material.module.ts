@@ -4,12 +4,16 @@ import { MatToolbarModule } from '@angular/material/toolbar';
 import { MatIconModule } from '@angular/material/icon';
 import { MatCardModule } from '@angular/material/card';
 import { MatButtonModule } from '@angular/material/button'
+import { MatProgressSpinnerModule } from '@angular/material/progress-spinner';
+import { FormsModule } from '@angular/forms'
 
 const materialModules = [
   MatToolbarModule,
   MatIconModule,
   MatCardModule,
-  MatButtonModule
+  MatButtonModule,
+  MatProgressSpinnerModule,
+  FormsModule,
 ]
 
 @NgModule({

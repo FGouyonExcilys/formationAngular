@@ -1,20 +1,36 @@
 import { Component, OnInit, Input } from '@angular/core';
 import { Recipe } from '../model/recipe.model';
-import { MOCK_RECIPES } from '../mock/recipes.mock';
+import { RecipeService } from '../services/recipe.service';
 
 @Component({
   selector: 'app-recipe-list',
   templateUrl: './recipe-list.component.html',
-  styleUrls: ['./recipe-list.component.scss']
+  styleUrls: ['./recipe-list.component.scss'],
 })
 export class RecipeListComponent implements OnInit {
 
-  @Input() recipes: Recipe[] = MOCK_RECIPES;
+  recipes: Recipe[];
 
-  constructor() { }
+  constructor(private readonly recipeService: RecipeService) {}
 
-  ngOnInit(): void {
+  ngOnInit() {
+    this.getRecipes();
   }
 
+  getRecipes(): void{
+    this.recipeService.getRecipes().subscribe(
+      (result: Recipe[]) => {
+        this.recipes = result;
+      },
+      (error) => {
+        console.log("C'est tout cassé !");
+      }
+    );
+  }
 
+  deleteRecipeById(id: number): void{
+    this.recipeService.deleteRecipe(id).subscribe(
+      () => this.getRecipes()
+    );
+  }
 }

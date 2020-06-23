@@ -1,0 +1,26 @@
+<mat-card class="example-card" *ngIf="recipe">
+  <mat-card-header>
+    <div mat-card-avatar class="example-header-image"></div>
+    <mat-card-title>{{recipe.name}}</mat-card-title>
+    <mat-card-subtitle>Cocktails of Quality</mat-card-subtitle>
+  </mat-card-header>
+  <!--<img mat-card-image src="https://material.angular.io/assets/img/examples/shiba1.jpg" alt="Photo of a Shiba Inu">-->
+  <img mat-card-image [src]="recipe.picture" alt="Photo of a Daikiri Cocktail">
+
+  <mat-card-content>
+    <p> {{recipe.description}} </p>
+    <ul *ngIf="displayIngredients">
+      <li *ngFor="let ingredient of recipe.ingredients">
+        {{ingredient.ingredient.name}} - {{ingredient.quantity}}{{ingredient.unit}}
+      </li>
+
+    </ul>
+  </mat-card-content>
+  <mat-card-actions>
+    <button mat-raised-button (click)='toggleExpand()'>More...</button>
+    <a mat-raised-button color="primary" routerLink="/recipes">Retour</a>
+  </mat-card-actions>
+
+  <!-- <mat-spinner class="example-card" *ngIf="!recipe"></mat-spinner> -->
+
+</mat-card>
